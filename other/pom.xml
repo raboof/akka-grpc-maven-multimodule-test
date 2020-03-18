@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>net.bzzt</groupId>
+        <artifactId>multi</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.bzzt</groupId>
+    <artifactId>other</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.lightbend.akka.grpc</groupId>
+            <artifactId>akka-grpc-runtime_2.12</artifactId>
+            <version>${akka.grpc.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.lightbend.akka.grpc</groupId>
+                <artifactId>akka-grpc-maven-plugin</artifactId>
+                <version>${akka.grpc.version}</version>
+                <configuration>
+                    <language>Java</language>
+                    <protoPaths>
+                        <protoPath>src/main/proto</protoPath>
+                    </protoPaths>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        </build>
+    
+    <properties>
+	    <akka.grpc.version>0.8.0+8-b69bea17</akka.grpc.version>
+    </properties>
+</project>
+
